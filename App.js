@@ -9,6 +9,8 @@ import { TextInput, View } from 'react-native';
 const [userAddress, setUserAddress] = useState("");
 const [messages, setMessages] = useState([]);
 
+
+// Replace the ABI with yours
 const contractABI = [
 	{
 		"anonymous": false,
@@ -73,9 +75,9 @@ const contractABI = [
 	}
 ]
 
+// Replace the contract address
 const contractAddress = "0xd9145CCE52D386f254917e481eB44e9943F39138"
-
-
+// Replace this with datahub API
 const web3 = new Web3('https://celo-testnet--rpc--alfajores.datahub.figment.io/apikey/<YOUR_API_KEY>/');
 
 useEffect(() => {
