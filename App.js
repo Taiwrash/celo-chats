@@ -4,12 +4,6 @@ import Web3 from 'web3';
 import 'tailwindcss/tailwind.css';
 import { TextInput, View } from 'react-native';
 
-
-
-const [userAddress, setUserAddress] = useState("");
-const [messages, setMessages] = useState([]);
-
-
 // Replace the ABI with yours
 const contractABI = [
 	{
@@ -78,7 +72,10 @@ const contractABI = [
 // Replace the contract address
 const contractAddress = "0xd9145CCE52D386f254917e481eB44e9943F39138"
 // Replace this with datahub API
-const web3 = new Web3('https://celo-testnet--rpc--alfajores.datahub.figment.io/apikey/<YOUR_API_KEY>/');
+const web2 = new Web3('https://celo-testnet--rpc--alfajores.datahub.figment.io/apikey/<YOUR_API_KEY>/');
+export default function App() {
+const [userAddress, setUserAddress] = useState("");
+const [messages, setMessages] = useState([]);
 
 useEffect(() => {
   // Subscribe to new message events
@@ -109,24 +106,28 @@ async function handleSend(messages) {
   const contract = new web3.eth.Contract(contractABI, contractAddress);
   await contract.methods.sendMessage(text).send({ from: userAddress });
 }
- 
-<GiftedChat
-  messages={messages}
-  user={{ _id: userAddress, name: userAddress }}
-  onSend={handleSend}
-  placeholder="Type your message here..."
-  renderComposer={(props) => (
-      <TextInput
-        {...props}
-        style="w-full px-4 py-2 border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-      />
-    )}
-    renderSend={(props) => (
-      <Send {...props}>
-        <View style="flex items-center justify-center w-10 h-10 rounded-full bg-blue-500">
-          <Icon name="send" size={24} color="#fff" />
-        </View>
-      </Send>
-    )}
-    messagesContainerStyle="flex-1 bg-gray-100"
-  />
+
+
+return (    
+	<GiftedChat
+	messages={messages}
+	user={{ _id: userAddress, name: userAddress }}
+	onSend={handleSend}
+	placeholder="Type your message here..."
+	renderComposer={(props) => (
+		<TextInput
+			{...props}
+			style="w-full px-4 py-2 border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+		/>
+		)}
+		renderSend={(props) => (
+		<Send {...props}>
+			<View style="flex items-center justify-center w-10 h-10 rounded-full bg-blue-500">
+			<Icon name="send" size={24} color="#fff" />
+			</View>
+		</Send>
+		)}
+		messagesContainerStyle="flex-1 bg-gray-100"
+	/>
+	);
+}
