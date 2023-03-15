@@ -109,10 +109,7 @@ async function handleSend(messages) {
   const contract = new web3.eth.Contract(contractABI, contractAddress);
   await contract.methods.sendMessage(text).send({ from: userAddress });
 }
-
-export default function App() {
-  return (
-    
+ 
 <GiftedChat
   messages={messages}
   user={{ _id: userAddress, name: userAddress }}
@@ -133,5 +130,3 @@ export default function App() {
     )}
     messagesContainerStyle="flex-1 bg-gray-100"
   />
-  );
-}
