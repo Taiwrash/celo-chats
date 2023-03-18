@@ -17,10 +17,13 @@ jobs:
       - name: Install dependencies
         run: |
           npm install
+      - name: Install React Native CLI
+        run: npm install -g react-native-cli
+
       - name: Build app
         run: |
-          expo build:android -t apk --no-publish
-          expo build:ios --no-publish
+          npx expo build:android -t apk --no-publish
+         # expo build:ios --no-publish
       - name: Upload APK to Google Drive
         run: |
           echo "Uploading to GDrive.."
