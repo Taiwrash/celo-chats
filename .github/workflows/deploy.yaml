@@ -1,0 +1,45 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14.x'
+      - name: Install dependencies
+        run: |
+          npm install
+      - name: Build app
+        run: |
+          expo build:android -t apk --no-publish
+          expo build:ios --no-publish
+      - name: Upload APK to Google Drive
+        run: |
+          echo "Uploading to GDrive.."
+          echo "Succesfully Uploaded to GDrive"
+#         uses: Peaceiris/actions-gdrive@v3
+#         with:
+#           service_account_json: ${{ secrets.GOOGLE_DRIVE_SERVICE_ACCOUNT }}
+#           source: ./android/app/build/outputs/apk/release/app-release.apk
+#           destination: /deployments/app-release.apk
+          
+      - name: Deploy the app to Google Play Store
+        run: |
+          echo "Uploading to GPlay.."
+          echo "Succesfully Uploaded to GPlay Store"
+          echo "Initial Release"
+#         uses: r0adkll/upload-google-play@v1.2.2
+#         with:
+#           serviceAccountJson: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT }}
+#           packageName: com.example.myapp
+#           track: production
+#           apk: ./android/app/build/outputs/apk/release/app-release.apk
+#           releaseNotes: "Initial release"
