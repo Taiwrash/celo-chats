@@ -24,9 +24,9 @@ jobs:
         run: |
           npm install -g eas-cli
           npx expo login --username taiwrash --password Twins@0606
-          npx eas build:configure
-          npx eas build --platform android
-          npx eas build:list
+          eas build:configure
+          eas build --platform android
+          
          # npx expo build:android -t apk --no-publish
          # expo build:ios --no-publish
       - name: Upload APK to Google Drive
