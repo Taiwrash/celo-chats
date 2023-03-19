@@ -22,10 +22,11 @@ jobs:
 
       - name: Build app
         run: |
-          npm install -g eas-cli
-          # npx expo login --username taiwrash --password Twins@0606
+          # npm install -g eas-cli
+          npx expo login --username taiwrash --password Twins@0606
           # eas build:configure
-          eas build --platform android --non-interactive
+          # eas build --platform android --non-interactive
+          npx expo build:android
           
          # npx expo build:android -t apk --no-publish
          # expo build:ios --no-publish
