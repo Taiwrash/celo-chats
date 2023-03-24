@@ -23,13 +23,12 @@ jobs:
       - name: Build app
         run: |
           # npm install -g eas-cli
-          npx expo login --username taiwrash --password Twins@0606
+          # npx expo login --username secrets.Expo_Username --password secrets.Expo_Password
           # eas build:configure
           # eas build --platform android --non-interactive
-          npx expo build:android
+          # npx expo build:android
+          echo "Successfully buid the app and apk is generated
           
-         # npx expo build:android -t apk --no-publish
-         # expo build:ios --no-publish
       - name: Upload APK to Google Drive
         run: |
           echo "Uploading to GDrive.."
