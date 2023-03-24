@@ -24,7 +24,7 @@ jobs:
         run: |
             echo "Successfully buid the app and apk is generated"
 #           npm install -g eas-cli
-#           npx expo login --username secrets.Expo_Username --password secrets.Expo_Password
+#           npx expo login --username ${{secrets.Expo_Username}} --password ${{secrets.Expo_Password}}
 #           eas build:configure
 #           eas build --platform android --non-interactive
 #           npx expo build:android
